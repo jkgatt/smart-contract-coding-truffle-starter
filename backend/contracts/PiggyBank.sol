@@ -6,7 +6,7 @@ contract PiggyBank {
 
     uint minimumTimeWithdrawal = 1 minutes;
 
-    uint public piggy;
+    uint256 piggy;
     address payable owner;
     uint256 deadline;
 
@@ -18,6 +18,10 @@ contract PiggyBank {
     modifier onlyOwner {
         require(owner == msg.sender, "You are not the owner!");
         _;
+    }
+    
+    function getTotalAmount() public view returns (uint256) {
+        return piggy;
     }
 
     function payMe() public payable{
